@@ -12,12 +12,11 @@ ENV ERL_LIBS $ERL_LIBS:$LFE_HOME:$DEPS
 RUN apt-get -f install -y
 RUN apt-get install -y libpam0g-dev
 
-RUN git clone $APP_REPO $APP_DIR && \
-        cd $APP_DIR && \
-        ln -s $LFE_HOME $DEPS_DIR/lfe && \
-        rebar compile
+RUN git clone $APP_REPO $APP_DIR
 
-RUN cp $DEPS_DIR/*/ebin/* $APP_DIR/ebin/
+#RUN echo "Bust cache ..."
+
+RUN cd $APP_DIR && make compile-for-docker
 
 EXPOSE 5099
 
