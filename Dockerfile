@@ -1,7 +1,7 @@
 FROM lfex/debian
 
 ENV APP_DIR /opt/sample-app
-ENV APP_REPO https://github.com/oubiwann/docker-lfe-yaws-sample-app.git
+ENV APP_REPO https://github.com/oubiwann/docker-lfe-yaws-websocket-app.git
 ENV DEPS_DIR $APP_DIR/deps
 ENV YAWS_DIR $DEPS_DIR/yaws
 ENV YAWS_APP_ID sampleapp
