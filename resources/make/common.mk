@@ -2,7 +2,7 @@ ifeq ($(shell which erl),)
 $(error Can't find Erlang executable 'erl')
 exit 1
 endif
-PROJECT = websocket-app
+PROJECT = websockets-app
 LIB = $(PROJECT)
 DEPS = ./deps
 BIN_DIR = ./bin
