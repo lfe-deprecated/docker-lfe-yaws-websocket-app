@@ -3,6 +3,8 @@
 *An example LFE/YAWS websocket App Running on Docker*
 
 
+WORK IN PROGRES: The following commands won't work until this project has been completed and a Docker image pushed to Docker Hub.
+
 ## Introduction
 
 This repo is featured in the
@@ -26,7 +28,7 @@ $ docker run -p 5099:5099 -t oubiwann/lfe-yaws-websocket-app:latest
 You don't need the source code for that command; it will pull from Docker Hub.
 
 
-## Builing
+## Building
 
 If you should choose to build the Docker image yourself instead of getting it
 from Docker Hub:
