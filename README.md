@@ -1,4 +1,4 @@
-# sample-app
+# websockets-app
 
 *An example LFE/YAWS websockets App Running on Docker*
 

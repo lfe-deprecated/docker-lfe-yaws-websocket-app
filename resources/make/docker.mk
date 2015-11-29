@@ -1,6 +1,10 @@
 IMAGE_TAG = oubiwann/lfe-yaws-websockets-app
 IMAGE_VERSION = latest
 
+docker-clean:
+	@-docker rm $(shell docker ps -a -q)
+	@-docker rmi $(shell docker images -q --filter 'dangling=true')
+
 docker-build:
 	docker build -t $(IMAGE_TAG):$(IMAGE_VERSION) .
 
