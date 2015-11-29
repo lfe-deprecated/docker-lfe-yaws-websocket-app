@@ -17,5 +17,8 @@
               'undefined))
 
 (defun out-helper (arg-data router websocket-callback websocket-opts)
-  (logjam:debug 'websocket-app 'out-helper "Got arg-data: ~p" arg-data)
+  (logjam:debug 'websocket-app
+                'out-helper
+                "Got arg-data: ~p"
+                `(,arg-data))
   (lfest:out-helper arg-data router))
