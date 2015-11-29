@@ -42,6 +42,27 @@ deps-lib:
 # 	DEPS_TAG=0.1.8 \
 # 	make deps-lib
 
+deps-lfe:
+	ln -s $(LFE_HOME) $(DEPS_DIR)/
+
+deps-lutil:
+	DEPS_LIB=lutil \
+	DEPS_REPO=https://github.com/lfex/lutil.git \
+	DEPS_TAG=0.6.7 \
+	make deps-lib
+
+deps-ltest:
+	DEPS_LIB=ltest \
+	DEPS_REPO=https://github.com/lfex/ltest.git \
+	DEPS_TAG=0.6.4 \
+	make deps-lib
+
+deps-lcfg:
+	DEPS_LIB=lcfg \
+	DEPS_REPO=https://github.com/lfex/lcfg.git \
+	DEPS_TAG=0.1.1 \
+	make deps-lib
+
 deps-exemplar:
 	DEPS_LIB=exemplar \
 	DEPS_REPO=https://github.com/lfex/exemplar.git \
@@ -71,18 +92,6 @@ deps-logjam:
 	DEPS_REPO=https://github.com/lfex/logjam.git \
 	DEPS_TAG=0.1.0 \
 	make deps-lib
-
-deps-lfe:
-	ln -s $(LFE_HOME) $(DEPS_DIR)/
-
-deps-lutil:
-	ln -s $(USER_LIBS)/lutil $(DEPS_DIR)/
-
-deps-ltest:
-	ln -s $(USER_LIBS)/ltest $(DEPS_DIR)/
-
-deps-lcfg:
-	ln -s $(USER_LIBS)/lcfg $(DEPS_DIR)/
 
 # get-deps-for-docker: get-deps-prep deps-yaws deps-ibrowse deps-lager \
 # 	deps-goldrush \
