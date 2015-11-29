@@ -101,9 +101,6 @@ get-deps-for-docker: get-deps-prep \
 	deps-lfest deps-kla deps-clj deps-logjam
 
 compile-for-docker: get-deps-for-docker
-	rebar get-deps
-	rebar compile
-	#cp -v $(USER_LIBS)/*/ebin/* $(APP_DIR)/ebin/
-	cp -v $(DEPS_DIR)/*/ebin/* $(APP_DIR)/ebin/
-	#cp -v $(LFE_HOME)/ebin/* $(APP_DIR)/ebin/
-
+	#rebar get-deps
+	#rebar compile
+	#cp -v $(DEPS_DIR)/*/ebin/* $(APP_DIR)/ebin/
