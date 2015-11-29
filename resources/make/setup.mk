@@ -87,8 +87,9 @@ deps-lcfg:
 # get-deps-for-docker: get-deps-prep deps-yaws deps-ibrowse deps-lager \
 # 	deps-goldrush \
 
-get-deps-for-docker:
+get-deps-for-docker: get-deps-prep \
 	deps-lfe deps-lutil deps-lcfg deps-ltest deps-exemplar \
+	deps-lfest deps-kla deps-clj deps-logjam
 
 compile-for-docker: get-deps-for-docker
 	rebar get-deps
