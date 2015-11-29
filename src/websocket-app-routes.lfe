@@ -7,6 +7,8 @@
 (defroutes
   ('GET "/"
     (websocket-app-content:get-sidebar-content arg-data))
+  ('GET "/chat"
+    (websocket-app-content:get-chat-content arg-data))
   ('GET "/content/:id"
     (websocket-app-content:get-content id arg-data))
   ('GET "/relation/:userid/:accountid"

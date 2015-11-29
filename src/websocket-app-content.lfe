@@ -49,6 +49,23 @@
               (div
                 (p "This is the main page. Links are to the left."))))))))
 
+(defun get-chat-content (arg-data)
+  "Get the chat page"
+  (let ((title "Chat Page"))
+    (lfest-html-resp:ok
+        (base-sidebar-page
+          title
+          (div '(class "col-md-3 col-sm-4 sidebar")
+            (ul '(class "nav nav-stacked nav-pills")
+              (websocket-app-nav:get-side-menu)))
+          (div
+            (list
+              (h1 title)
+              (h2 "Room #1")
+              (div
+                (p "This is the chat page. Links are to the left."))))))))
+
+
 (defun get-content (item-id arg-data)
   "2-arity content API.
 
