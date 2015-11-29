@@ -12,9 +12,9 @@ ENV ERL_LIBS $ERL_LIBS:$LFE_HOME:$DEPS
 RUN apt-get -f install -y
 RUN apt-get install -y libpam0g-dev
 
-RUN git clone $APP_REPO $APP_DIR
-
 #RUN echo "Bust cache ..."
+
+RUN git clone $APP_REPO $APP_DIR
 
 RUN cd $APP_DIR && make compile-for-docker
 
