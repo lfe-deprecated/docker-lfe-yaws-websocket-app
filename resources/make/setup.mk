@@ -78,7 +78,7 @@ deps-lfest:
 deps-kla:
 	DEPS_LIB=kla \
 	DEPS_REPO=https://github.com/lfex/kla.git \
-	DEPS_TAG=0.4.2 \
+	DEPS_TAG=0.4.3 \
 	make deps-lib
 
 deps-clj:
