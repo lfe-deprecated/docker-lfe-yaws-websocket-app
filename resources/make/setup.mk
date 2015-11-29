@@ -10,7 +10,7 @@ get-deps-prep:
 deps-lib:
 	cd $(DEPS_DIR) && git clone $(DEPS_REPO) $(DEPS_LIB)
 	cd $(DEPS_DIR)/$(DEPS_LIB) && \
-	git checkout tags/$(DEPS_TAG) > /dev/null
+	git checkout tags/$(DEPS_TAG) 2> /dev/null
 
 # deps-yaws:
 # 	DEPS_LIB=yaws \
