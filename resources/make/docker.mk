@@ -1,4 +1,4 @@
-IMAGE_TAG = oubiwann/lfe-yaws-websockets-app
+IMAGE_TAG = oubiwann/lfe-yaws-websocket-app
 IMAGE_VERSION = latest
 
 docker-build:
