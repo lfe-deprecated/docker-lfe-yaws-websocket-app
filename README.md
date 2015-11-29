@@ -2,6 +2,8 @@
 
 *An example LFE/YAWS websockets App Running on Docker*
 
+WORK IN PROGRES: The following commands won't work until this project has been completed and a Docker image pushed to Docker Hub.
+
 ## Introduction
 
 This repo is featured in the
