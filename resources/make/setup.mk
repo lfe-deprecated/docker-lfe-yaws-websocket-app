@@ -1,5 +1,3 @@
-USER_LIBS=/root/.lfe/libs
-
 get-deps-prep:
 	mkdir -p $(DEPS_DIR)
 
@@ -11,36 +9,6 @@ deps-lib:
 	cd $(DEPS_DIR) && git clone $(DEPS_REPO) $(DEPS_LIB)
 	cd $(DEPS_DIR)/$(DEPS_LIB) && \
 	git checkout tags/$(DEPS_TAG) 2> /dev/null
-
-# deps-yaws:
-# 	DEPS_LIB=yaws \
-# 	DEPS_REPO=https://github.com/klacke/yaws.git \
-# 	DEPS_TAG=yaws-2.0.2 \
-# 	make deps-lib
-
-# deps-ibrowse:
-# 	DEPS_LIB=ibrowse \
-# 	DEPS_REPO=https://github.com/cmullaparthi/ibrowse.git \
-# 	DEPS_TAG=v4.2.2 \
-# 	make deps-lib
-
-# deps-color:
-# 	DEPS_LIB=color \
-# 	DEPS_REPO=https://github.com/julianduque/erlang-color.git \
-# 	DEPS_TAG=v0.2.0 \
-# 	make deps-lib
-
-# deps-lager:
-# 	DEPS_LIB=lager \
-# 	DEPS_REPO=https://github.com/basho/lager.git \
-# 	DEPS_TAG=3.0.2 \
-# 	make deps-lib
-
-# deps-goldrush:
-# 	DEPS_LIB=goldrush \
-# 	DEPS_REPO=https://github.com/DeadZen/goldrush.git \
-# 	DEPS_TAG=0.1.8 \
-# 	make deps-lib
 
 deps-lfe:
 	ln -s $(LFE_HOME) $(DEPS_DIR)/
@@ -93,14 +61,10 @@ deps-logjam:
 	DEPS_TAG=0.1.0 \
 	make deps-lib
 
-# get-deps-for-docker: get-deps-prep deps-yaws deps-ibrowse deps-lager \
-# 	deps-goldrush \
-
-get-deps-for-docker: get-deps-prep \
-	deps-lfe deps-lutil deps-lcfg deps-ltest deps-exemplar \
+get-deps-for-docker: deps-lutil deps-lcfg deps-ltest deps-exemplar \
 	deps-lfest deps-kla deps-clj deps-logjam
 
-compile-for-docker: get-deps-for-docker
-	#rebar get-deps
-	#rebar compile
-	#cp -v $(DEPS_DIR)/*/ebin/* $(APP_DIR)/ebin/
+compile-for-docker: get-deps-prep deps-lfe get-deps-for-docker
+	rebar get-deps
+	rebar compile
+	cp -v $(DEPS_DIR)/*/ebin/* $(APP_DIR)/ebin/
