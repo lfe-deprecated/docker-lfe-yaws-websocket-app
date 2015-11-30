@@ -14,7 +14,8 @@
             (title title)
             (link '(rel "stylesheet" href "/css/bootstrap-min.css"))
             (link '(rel "stylesheet" href "/css/bootstrap-slate-min.css"))
-            (script '(src "/js/bootstrap-min.js"))))
+            (script '(src "/js/bootstrap-min.js"))
+            (script '(src "/js/chat.js"))))
         (body
           (main
             (list
@@ -62,9 +63,27 @@
             (list
               (h1 title)
               (h2 "Room #1")
-              (div
-                (p "This is the chat page. Links are to the left."))))))))
-
+              (div '(id "chat-area")
+                (list
+                  (div '(id "messages"))
+                  (form '(action "#" id "form-signin" onSubmit "return connect()")
+                    (list
+                      (h2 '(class "form-signin-heading") "Please sign in")
+                      (label '(for "input-nick" class "sr-only") "Chat nick")
+                      (input '(type "text" class "form-control" id "nick-input"
+                               placeholder "Your nick"))
+                      (button '(class "btn btn-lg btn-primary btn-block" type "submit")
+                        "Sign in")))
+                  (div '(id "user-input" hidden "true")
+                    (div '(class "row")
+                      (div '(class "col-lg-12")
+                        (div '(class "input-group")
+                          (list
+                            (input '(type "text" class "form-control" id "user-message"
+                                     placeholder "Type your message here ..."))
+                            (span '(class "input-group-btn" type "button"
+                                    onSubmit "sendMessage(event)")
+                              "Send message"))))))))))))))
 
 (defun get-content (item-id arg-data)
   "2-arity content API.
