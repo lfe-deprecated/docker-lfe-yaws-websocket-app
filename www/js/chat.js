@@ -9,7 +9,7 @@ function connect() {
     var signInArea = $("#form-signin");
     var inputArea = $("#user-input");
     nick = $("#nick-input").value;
-    chatArea.removeChild(signInArea);
+    signInArea.remove();
 
     if ("WebSocket" in window) {
         msgArea.innerHTML += "Connecting ... ";
