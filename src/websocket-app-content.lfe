@@ -56,11 +56,8 @@
   "Get the chat page"
   (let ((title "Chat Page"))
     (lfest-html-resp:ok
-        (base-sidebar-page
+        (base-page
           title
-          (div '(class "col-md-3 col-sm-4 sidebar")
-            (ul '(class "nav nav-stacked nav-pills")
-              (websocket-app-nav:get-side-menu)))
           (div
             (list
               (h1 title)
@@ -68,25 +65,29 @@
               (div '(id "chat-area")
                 (list
                   (div '(id "messages"))
-                  (form '(action "#" id "form-signin" onSubmit "return connect()"
-                          accept-charset "utf-8")
-                    (list
-                      (h2 '(class "form-signin-heading") "Please sign in")
-                      (label '(for "input-nick" class "sr-only") "Chat nick")
-                      (input '(type "text" class "form-control" id "nick-input"
-                               placeholder "Your nick"))
-                      (button '(class "btn btn-lg btn-primary btn-block" type "submit")
-                        "Sign in")))
-                  (div '(id "user-input" hidden "true")
-                    (div '(class "row")
-                      (div '(class "col-lg-6 col-lg-offset-3")
-                        (div '(class "input-group")
-                          (list
-                            (input '(type "text" class "form-control" id "user-message"
-                                     placeholder "Type your message here ..."))
-                            (span '(class "input-group-btn" type "button"
-                                    onSubmit "sendMessage(event)")
-                              "Send message"))))))))))))))
+                  (get-login-form)
+                  (get-input-area)))))))))
+
+(defun get-login-form ()
+  (form '(action "#" id "form-signin" onSubmit "return connect()"
+          accept-charset "utf-8")
+    (list
+      (h2 '(class "form-signin-heading") "Please sign in")
+      (label '(for "input-nick" class "sr-only") "Chat nick")
+      (input '(type "text" class "form-control" id "nick-input"
+               placeholder "Your nick"))
+      (button '(class "btn btn-lg btn-primary btn-block" type "submit")
+        "Sign in"))))
+
+(defun get-input-area ()
+  (div '(id "user-input" hidden "true")
+    (div '(class "input-group")
+      (list
+        (input '(type "text" class "form-control" id "user-message"
+                 placeholder "Type your message here ..."))
+        (span '(class "input-group-btn" type "button"
+                onSubmit "sendMessage(event)")
+          "Send message")))))
 
 (defun get-content (item-id arg-data)
   "2-arity content API.
