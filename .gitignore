@@ -1,6 +1,5 @@
 ebin
-deps/*/ebin
-deps/*/.rebar
+deps
 logs
 deps/yaws/c_src/*.d
 deps/lfe
