@@ -1,24 +1,24 @@
-ETC_DIR = ./etc
-YAWS_DIR = $(DEPS)/yaws
+ETC_DIR = $(APP_DIR)/etc
+YAWS_DIR = $(DEPS_DIR)/yaws
 YAWS = $(YAWS_DIR)/bin/yaws
 YAWS_CONF = $(ETC_DIR)/yaws.conf
-YAWS_SERVER_ID = sampleapp
+YAWS_APP_ID = websocketapp
 
-dev: compile-no-deps
-	@ERL_LIBS=$(shell lfetool info erllibs) \
-	$(YAWS) -i --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID)
+run: compile-no-deps copy-deps
+	APP_DIR=$(APP_DIR) YAWS_DIR=$(YAWS_DIR) YAWS_APP_ID=$(YAWS_APP_ID) ./bin/run
 
-daemon: compile
-	@ERL_LIBS=$(shell lfetool info erllibs) \
-	$(YAWS) -D --heart --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID)
+dev: run
+
+daemon: compile copy-deps
+	APP_DIR=$(APP_DIR) YAWS_DIR=$(YAWS_DIR) YAWS_APP_ID=$(YAWS_APP_ID) ./bin/daemon
 
 prod: daemon
 
 update-conf:
-	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -h --conf $(YAWS_CONF) --id $(YAWS_SERVER_ID)
+	$(YAWS) -h --conf $(YAWS_CONF) --id $(YAWS_APP_ID)
 
 stats:
-	@ERL_LIBS=$(ERL_LIBS) $(YAWS) -S --id $(YAWS_SERVER_ID)
+	$(YAWS) -S --id $(YAWS_APP_ID)
 
 stop:
-	@ERL_LIBS=$(ERL_LIBS) $(YAWS) --stop --id $(YAWS_SERVER_ID)
+	YAWS_DIR=$(YAWS_DIR) YAWS_APP_ID=$(YAWS_APP_ID) ./bin/stop

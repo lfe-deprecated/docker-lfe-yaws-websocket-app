@@ -64,7 +64,10 @@ deps-logjam:
 get-deps-for-docker: deps-lutil deps-lcfg deps-ltest deps-exemplar \
 	deps-lfest deps-kla deps-clj deps-logjam
 
+copy-deps:
+	cp -v $(DEPS_DIR)/*/ebin/* $(APP_DIR)/ebin/
+
 compile-for-docker: get-deps-prep deps-lfe get-deps-for-docker
 	rebar get-deps
 	rebar compile
-	cp -v $(DEPS_DIR)/*/ebin/* $(APP_DIR)/ebin/
+	make copy-deps
