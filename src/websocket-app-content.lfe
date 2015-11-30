@@ -11,9 +11,11 @@
       (list
         (head
           (list
+            (meta '(charset "utf-8"))
             (title title)
             (link '(rel "stylesheet" href "/css/bootstrap-min.css"))
             (link '(rel "stylesheet" href "/css/bootstrap-slate-min.css"))
+            (script '(src "/js/jquery-2.1.4.min.js"))
             (script '(src "/js/bootstrap-min.js"))
             (script '(src "/js/chat.js"))))
         (body
@@ -66,7 +68,8 @@
               (div '(id "chat-area")
                 (list
                   (div '(id "messages"))
-                  (form '(action "#" id "form-signin" onSubmit "return connect()")
+                  (form '(action "#" id "form-signin" onSubmit "return connect()"
+                          accept-charset "utf-8")
                     (list
                       (h2 '(class "form-signin-heading") "Please sign in")
                       (label '(for "input-nick" class "sr-only") "Chat nick")
@@ -76,7 +79,7 @@
                         "Sign in")))
                   (div '(id "user-input" hidden "true")
                     (div '(class "row")
-                      (div '(class "col-lg-12")
+                      (div '(class "col-lg-6 col-lg-offset-3")
                         (div '(class "input-group")
                           (list
                             (input '(type "text" class "form-control" id "user-message"
