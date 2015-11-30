@@ -1,14 +1,14 @@
 var chatHost = "ws://localhost:8080/chat";
-var chatArea = document.getElementById("chat-area");
-var msgArea = document.getElementById("messages");
-var signInArea = document.getElementById("form-signin");
-var inputArea = document.getElementById("user-input");
+var chatArea = $("#chat-area");
+var msgArea = $("#messages");
+var signInArea = $("#form-signin");
+var inputArea = $("#user-input");
 var socketOpen = false;
 var ws;
 var nick;
 
 function connect() {
-    nick = document.getElementById("nick-input").value;
+    nick = $("#nick-input").value;
     chatArea.removeChild(signInArea);
 
     if ("WebSocket" in window) {
@@ -48,7 +48,7 @@ function connect() {
 
 // function mySubmit() {
 //     if (!socketOpen) {return;}
-//     var userInput = document.getElementById("user-message");
+//     var userInput = $("#user-message");
 //     ws.send(userInput.value)
 //     // msgArea.innerHTML += userInput.value + "<br/>";
 //     userInput.value = "";
@@ -61,7 +61,7 @@ function sendMessage(event) {
         return;
     }
 
-    var userInput = document.getElementById("user-message");
+    var userInput = $("#user-message");
     var msg = userInput.value.replace("\n", "");
 
     if (msg.length)  {
