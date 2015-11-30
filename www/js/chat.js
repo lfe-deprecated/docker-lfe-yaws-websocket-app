@@ -1,13 +1,13 @@
-var chatHost = "ws://localhost:8080/chat";
-var chatArea = $("#chat-area");
-var msgArea = $("#messages");
-var signInArea = $("#form-signin");
-var inputArea = $("#user-input");
 var socketOpen = false;
 var ws;
 var nick;
 
 function connect() {
+    var chatHost = "ws://localhost:8080/chat";
+    var chatArea = $("#chat-area");
+    var msgArea = $("#messages");
+    var signInArea = $("#form-signin");
+    var inputArea = $("#user-input");
     nick = $("#nick-input").value;
     chatArea.removeChild(signInArea);
 
