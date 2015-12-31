@@ -9,6 +9,7 @@ ENV LFE_DEPS $DEPS_DIR/lutil:$DEPS_DIR/exemplar:$DEPS_DIR/lfest:$DEPS_DIR/clj:$D
 ENV DEPS $YAWS_DIR:$LFE_DEPS:$DEPS_DIR/ibrowse:$DEPS_DIR/color
 ENV ERL_LIBS $ERL_LIBS:$LFE_HOME:$DEPS
 
+RUN apt-get update
 RUN apt-get -f install -y
 RUN apt-get install -y libpam0g-dev
 
